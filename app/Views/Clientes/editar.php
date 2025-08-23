@@ -16,19 +16,23 @@
       <div class="card-body">
         <div class="mb-2">
           <label for="apellidos">Apellidos</label>
-          <input type="text" class="form-control" name="apellidos" id="apellidos" value="<?= $cliente['apellidos'] ?>" required autofocus>
+          <input type="text" class="form-control" name="apellidos" id="apellidos" value="<?= $cliente['apellidos'] ?>"
+            required autofocus>
         </div>
         <div class="mb-2">
           <label for="nombres">Nombres</label>
-          <input type="text" class="form-control" name="nombres" id="nombres" value="<?= $cliente['nombres'] ?>" required>
+          <input type="text" class="form-control" name="nombres" id="nombres" value="<?= $cliente['nombres'] ?>"
+            required>
         </div>
         <div class="mb-2">
           <label for="dni">DNI</label>
-          <input type="text" class="form-control" name="dni" id="dni" maxlength="8" value="<?= $cliente['dni'] ?>" required>
+          <input type="text" class="form-control" name="dni" id="dni" maxlength="8" value="<?= $cliente['dni'] ?>"
+            required>
         </div>
         <div class="mb-2">
           <label for="telefono">Teléfono</label>
-          <input type="text" class="form-control" name="telefono" id="telefono" maxlength="9" value="<?= $cliente['telefono'] ?>" required>
+          <input type="text" class="form-control" name="telefono" id="telefono" maxlength="9"
+            value="<?= $cliente['telefono'] ?>" required>
         </div>
       </div>
       <div class="card-footer text-end">

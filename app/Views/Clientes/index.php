@@ -21,18 +21,18 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach($clientes as $cliente): ?>
-      <tr>
-        <td><?= $cliente['id'] ?></td>
-        <td><?= $cliente['apellidos'] ?></td>
-        <td><?= $cliente['nombres'] ?></td>
-        <td><?= $cliente['dni'] ?></td>
-        <td><?= $cliente['telefono'] ?></td>
-        <td>
-          <a href="<?= base_url('clientes/eliminar/') . $cliente['id'] ?>">Eliminar</a>
-          <a href="<?= base_url('clientes/editar/') . $cliente['id'] ?>">Editar</a>
-        </td>
-      </tr>
+      <?php foreach ($clientes as $cliente): ?>
+        <tr>
+          <td><?= $cliente['id'] ?></td>
+          <td><?= $cliente['apellidos'] ?></td>
+          <td><?= $cliente['nombres'] ?></td>
+          <td><?= $cliente['dni'] ?></td>
+          <td><?= $cliente['telefono'] ?></td>
+          <td>
+            <a href="<?= base_url('clientes/eliminar/') . $cliente['id'] ?>">Eliminar</a>
+            <a href="<?= base_url('clientes/editar/') . $cliente['id'] ?>">Editar</a>
+          </td>
+        </tr>
       <?php endforeach; ?>
     </tbody>
   </table>

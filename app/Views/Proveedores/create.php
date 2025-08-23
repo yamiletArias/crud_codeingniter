@@ -48,14 +48,6 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" placeholder="Nombre del Autor"
-                                        id="nombreAutor" name="nombreAutor" required>
-                                    <label for="form-label">Nombre del Autor</label>
-                                </div>
-                            </div> -->
-
                         </div>
 
                     </div>
@@ -63,10 +55,9 @@
 
                 <div class="card-footer text-end">
                     <button type="reset" class="btn btn-sm btn-outline-secondary">Cancelar</button>
-                    <!-- Los botones que estén dentro del formulario con TYPE=SUBMIT ejecutan/disparan al ACTION -->
                     <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
                 </div>
-                
+
             </div>
 
         </form>

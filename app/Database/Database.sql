@@ -29,7 +29,7 @@ INSERT INTO proveedores (nombre, telefono, email, direccion) VALUES
 	('Distribuidora Central S.A.', '956598499', 'contacto1@gmail.com', 'Av. Siempre Viva 123 xd'),
 	('TechPro Ltda', '987495621', 'contacto2@gmail.com', 'Calle Tecnología 45c');
 	
-SELECT * FROM proveedores;
+-- SELECT * FROM proveedores;
 
 
 

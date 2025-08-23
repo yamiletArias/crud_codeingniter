@@ -27,6 +27,7 @@ $routes->get('/clientes/eliminar/(:num)', 'ClienteController::eliminar/$1');
 $routes->post('/clientes/guardar','ClienteController::guardar');
 $routes->post('/clientes/actualizar','ClienteController::actualizar');
 
+
 // RUTAS DE PROVEDDORES
 
 //listar

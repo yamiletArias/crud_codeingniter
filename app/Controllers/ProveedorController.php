@@ -8,9 +8,9 @@ use App\Models\Proveedor;
 class ProveedorController extends BaseController
 {
 
+    // VISTAS
     public function index()
     {
-
         $proveedor = new Proveedor();
 
         $datos['proveedores'] = $proveedor->orderBy('id', 'DESC')->findAll();
@@ -41,6 +41,7 @@ class ProveedorController extends BaseController
         return view('Proveedores/edit', $datos);
     }
 
+    //GUARDAR / ACTUALIZAR / ELIMINAR EN LA BD
     public function save()
     {
         $proveedor = new Proveedor();
@@ -84,4 +85,5 @@ class ProveedorController extends BaseController
         $proveedor->update($id, $camposActualizar);
         return $this->response->redirect(base_url('proveedores'));
     }
+
 }
