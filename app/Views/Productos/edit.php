@@ -4,7 +4,7 @@
 
     <div class="my-3">
         <h2>Editar Productos</h2>
-        <a href="<?= base_url('productos') ?>"></a>
+        <a href="<?= base_url('productos') ?>" class="btn btn-sm btn-outline-primary">Volver</a>
     </div>
 
     <div class="mb-2">
