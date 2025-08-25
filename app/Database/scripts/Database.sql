@@ -54,11 +54,19 @@ INSERT INTO productos (nombre, descripcion, precio, descuento) VALUES
 CREATE TABLE ventas
 (
 	id 			INT AUTO_INCREMENT PRIMARY KEY,
-	fecha			DATETIME DEFAULT NOW(),
+	fecha 		DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	total			DECIMAL(10,2) NOT NULL,
 	idcliente	INT NULL,
+	created_at 	DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updated_at 	DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 	CONSTRAINT fk_cliente FOREIGN KEY (idcliente) REFERENCES clientes(id) ON DELETE SET NULL
 )ENGINE = INNODB;
+
+INSERT INTO ventas (total, idcliente)VALUES 
+	(2545.00, 1),
+	(100.00, NULL);
+
+-- SELECT * FROM ventas;
 
 CREATE TABLE detalleventa
 (
@@ -70,4 +78,23 @@ CREATE TABLE detalleventa
 	CONSTRAINT fk_venta FOREIGN KEY (idventa) REFERENCES ventas(id) ON DELETE CASCADE,
 	CONSTRAINT fk_producto FOREIGN KEY (idproducto) REFERENCES productos(id)
 )ENGINE = INNODB;
+
+INSERT INTO detalleventa (idventa, idproducto, cantidad, precio) VALUES
+(1, 1, 1, 2500.00),
+(1, 2, 1, 45.00);
+
+/*
+INSERT INTO detalleventa (idventa, idproducto, cantidad, precio) VALUES
+(2, 1, 1, 50.00);
+*/
+-- SELECT * FROM detalleventa;
+
+
+SELECT 
+  v.*, 
+  c.nombres, 
+  c.apellidos,
+  COALESCE((SELECT SUM(d.cantidad) FROM detalleventa d WHERE d.idventa = v.id), 0) AS total_cantidad
+FROM ventas v
+LEFT JOIN clientes c ON c.id = v.idcliente;
 
