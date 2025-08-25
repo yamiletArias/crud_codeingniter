@@ -51,6 +51,18 @@
                                     <label for="form-label">Descuento del Producto</label>
                                 </div>
                             </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <select name="idproveedor" id="idproveedor" class="form-select">
+                                        <option value="">Sin proveedor</option>
+                                        <?php foreach ($proveedores as $proveedor): ?>
+                                            <option value="<?= $proveedor['id'] ?>"><?= $proveedor['nombre'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <label for="idproveedor">Seleccionar Proveedor</label>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

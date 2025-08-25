@@ -15,10 +15,11 @@
                     <table class="table table-striped">
                         <colgroup>
                             <col width="5%">
-                            <col width="20%">
-                            <col width="35%">
                             <col width="15%">
+                            <col width="30%">
+                            <col width="5%">
                             <col width="10%">
+                            <col width="20%">
                             <col width="15%">
                         </colgroup>
                         <thead>
@@ -28,7 +29,8 @@
                                 <th>Descripcion</th>
                                 <th>Precio</th>
                                 <th>Descuento</th>
-                                <th>Acciones</th>
+                                <th>Proveedor</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +41,7 @@
                                     <td><?= $producto['descripcion'] ?></td>
                                     <td><?= $producto['precio'] ?></td>
                                     <td><?= $producto['descuento'] ?></td>
+                                    <td><?= $producto['nombreprov'] ?? 'Sin Proveedor' ?></td>
 
                                     <td class="text-center">
                                         <a href="<?= base_url('productos/delete/') . $producto['id'] ?>" type="button"

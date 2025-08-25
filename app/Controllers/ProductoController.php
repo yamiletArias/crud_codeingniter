@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Producto;
+use App\Models\Proveedor;
 
 class ProductoController extends BaseController
 {
@@ -12,7 +13,13 @@ class ProductoController extends BaseController
     {
         $producto = new Producto();
 
-        $datos['productos'] = $producto->orderBy('id', 'DESC')->findAll();
+        //$datos['productos'] = $producto->orderBy('id', 'DESC')->findAll();
+
+        $datos['productos'] = $producto
+        ->select('productos.*, proveedores.nombre as nombreprov')
+        ->join('proveedores', 'proveedores.id = productos.idproveedor', 'left')
+        ->orderBy('productos.id', 'DESC')
+        ->findAll();
 
         $datos['header'] = view('Layouts/header');
         $datos['footer'] = view('Layouts/footer');
@@ -32,6 +39,8 @@ class ProductoController extends BaseController
 
     public function create()
     {
+        $proveedor = new Proveedor();
+        $datos['proveedores'] = $proveedor->findAll();
         $datos['header'] = view('Layouts/header');
         $datos['footer'] = view('Layouts/footer');
 
@@ -42,11 +51,15 @@ class ProductoController extends BaseController
     {
         $producto = new Producto();
 
+        $idproveedor = $this->request->getVar('idproveedor');
+        $idproveedor = ($idproveedor === '') ? null : $idproveedor;
+
         $nuevoRegistro = [
             'nombre' => $this->request->getVar('nombre'),
             'descripcion' => $this->request->getVar('descripcion'),
             'precio' => $this->request->getVar('precio'),
-            'descuento' => $this->request->getVar('descuento')
+            'descuento' => $this->request->getVar('descuento'),
+            'idproveedor' => $idproveedor
         ];
 
         $producto->insert($nuevoRegistro);
