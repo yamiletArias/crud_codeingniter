@@ -17,6 +17,7 @@ $routes->get('/', 'Home::index');
 //Clase::metodo()     Se está utilizando un método sin instanciar la clase
 
 //RUTAS DE CLIENTE
+
 $routes->get('/clientes', 'ClienteController::index');
 $routes->get('/clientes/registrar', 'ClienteController::registrar');
 //$routes->get('/clientes/editar', 'ClienteController::editar');
@@ -42,3 +43,16 @@ $routes->get('/proveedores/delete/(:num)', 'ProveedorController::delete/$1');
 $routes->get('/proveedores/edit/(:num)', 'ProveedorController::edit/$1');
 //actualizar (al editar)
 $routes->post('/proveedores/update', 'ProveedorController::update');
+
+// RUTAS DE PRODUCTOS
+
+//listar
+$routes->get('/productos', 'ProductoController::index');
+//vista / registro 
+$routes->get('/productos/create', 'ProductoController::create');
+$routes->post('/productos/save', 'ProductoController::save');
+//vista / actualizar
+$routes->get('/productos/edit/(:num)', 'ProductoController::edit/$1');
+$routes->post('/productos/update', 'ProductoController::update');
+//eliminar por id
+$routes->get('/productos/delete/(:num)', 'ProductoController::delete/$1');

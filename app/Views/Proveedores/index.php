@@ -19,7 +19,7 @@
                             <col width="10%">
                             <col width="20%">
                             <col width="15%">
-                            <!-- <col width="40%"> -->
+                            <col width="15%">
                         </colgroup>
                         <thead>
                             <tr>

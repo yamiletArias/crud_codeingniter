@@ -31,5 +31,16 @@ INSERT INTO proveedores (nombre, telefono, email, direccion) VALUES
 	
 -- SELECT * FROM proveedores;
 
+CREATE TABLE productos(
+	id 			INT AUTO_INCREMENT	PRIMARY KEY,
+	nombre 		VARCHAR(150) NOT NULL,
+	descripcion TEXT NOT NULL,
+	precio 		DECIMAL(7,2) NOT NULL,
+	descuento 	INT	NULL
+)ENGINE=INNODB
 
+INSERT INTO productos (nombre, descripcion, precio, descuento) VALUES
+	('Laptop Hp', 'Laptod de 14 pulgadas con 8GB RAM y SSD de 256GB', 2500.00, 10),
+	('Mouse Inalambrico','Mouse optico inalambrico con conexion USB', 45.00, 5);
 
+SELECT * FROM productos;
