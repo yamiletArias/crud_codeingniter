@@ -21,11 +21,11 @@
                                 <div class="form-floating">
                                     <select name="idcliente" id="idcliente" class="form-select">
                                         <option value="">Sin Cliente</option>
-                                        <?php foreach ($clientes as $cliente): ?>
+                                        <!-- <?php foreach ($clientes as $cliente): ?>
                                             <option value="<?= $cliente['id'] ?>">
                                                 <?= $venta['nombres'] ? $venta['nombres'] . ' ' . $venta['apellidos'] : 'Sin cliente' ?>
                                             </option>
-                                        <?php endforeach; ?>
+                                        <?php endforeach; ?> -->
                                     </select>
                                     <label for="idproveedor">Seleccionar Proveedor</label>
                                 </div>
