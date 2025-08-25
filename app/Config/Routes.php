@@ -62,3 +62,5 @@ $routes->get('/productos/delete/(:num)', 'ProductoController::delete/$1');
 
 //listar
 $routes->get('/ventas', 'VentaController::index');
+//Vista de registrar
+$routes->get('/ventas/create', 'VentaController::create');

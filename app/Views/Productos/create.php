@@ -4,6 +4,7 @@
 
     <div class="my-3">
         <h2>Registro de Productos</h2>
+        
         <a href="<?= base_url('productos') ?>" class="btn btn-sm btn-outline-primary">Volver</a>
     </div>
 

@@ -26,6 +26,12 @@ Class VentaController extends BaseController
         return view('Ventas/index', $datos);
     }
 
-    
+    public function create()
+    {
+        $datos['header'] = view('Layouts/header');
+        $datos['footer'] = view('Layouts/footer');
+
+        return view('Ventas/create', $datos);
+    }
 
 }
