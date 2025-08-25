@@ -52,6 +52,7 @@
                                 </div>
                             </div>
                             
+                            <!-- CAMPO DE PROVEEDORES -->
                             <div class="col-md-12">
                                 <div class="form-floating">
                                     <select name="idproveedor" id="idproveedor" class="form-select">

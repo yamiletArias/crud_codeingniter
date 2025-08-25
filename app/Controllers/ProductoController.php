@@ -31,6 +31,10 @@ class ProductoController extends BaseController
     {
         $producto = new Producto();
         $datos['producto'] = $producto->where('id', $id)->first();
+
+        $proveedor = new Proveedor();
+        $datos['proveedores'] = $proveedor->findAll();
+
         $datos['header'] = view('Layouts/header');
         $datos['footer'] = view('Layouts/footer');
 
@@ -73,11 +77,15 @@ class ProductoController extends BaseController
 
         $id = $this->request->getVar('id');
 
+        $idproveedor = $this->request->getVar('idproveedor');
+        $idproveedor = ($idproveedor === '') ? null : $idproveedor;
+
         $updateProducto = [
             'nombre' => $this->request->getVar('nombre'),
             'descripcion' => $this->request->getVar('descripcion'),
             'precio' => $this->request->getVar('precio'),
-            'descuento' => $this->request->getVar('descuento')
+            'descuento' => $this->request->getVar('descuento'),
+            'idproveedor' => $idproveedor
         ];
 
         $producto->update($id, $updateProducto);

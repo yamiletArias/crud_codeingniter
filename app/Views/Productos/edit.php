@@ -3,7 +3,7 @@
 <div class="container my-2">
 
     <div class="my-3">
-        <h2>Registro de Productos</h2>
+        <h2>Editar Productos</h2>
         <a href="<?= base_url('productos') ?>"></a>
     </div>
 
@@ -53,6 +53,22 @@
                                     <input type="number" class="form-control text-end" placeholder="Precio del Producto"
                                         id="descuento" name="descuento" value="<?= $producto['descuento'] ?>">
                                     <label for="form-label">Descuento del Producto</label>
+                                </div>
+                            </div>
+
+                            <!-- CAMPO DE PROVEEDORES -->
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <select name="idproveedor" id="idproveedor" class="form-select">
+                                        <option value="">Sin proveedor</option>
+                                        <?php foreach ($proveedores as $proveedor): ?>
+                                            <option value="<?= $proveedor['id'] ?>"
+                                                <?= ($producto['idproveedor'] == $proveedor['id']) ? 'selected' : '' ?>>
+                                                <?= $proveedor['nombre'] ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <label for="idproveedor">Seleccionar Proveedor</label>
                                 </div>
                             </div>
 
