@@ -37,7 +37,7 @@ CREATE TABLE productos(
 	descripcion TEXT NOT NULL,
 	precio 		DECIMAL(7,2) NOT NULL,
 	descuento 	INT	NULL,
-	idproveedor INT,
+	idproveedor INT NULL,
 	CONSTRAINT fk_proveedor FOREIGN KEY (idproveedor) REFERENCES proveedores(id)
 )ENGINE=INNODB;
 
@@ -49,6 +49,25 @@ INSERT INTO productos (nombre, descripcion, precio, descuento) VALUES
 	('Mouse Inalambrico','Mouse optico inalambrico con conexion USB', 45.00, 5);
 
 -- SELECT * FROM productos;
-
 -- DROP TABLE IF EXISTS productos;
+
+CREATE TABLE ventas
+(
+	id 			INT AUTO_INCREMENT PRIMARY KEY,
+	fecha			DATETIME DEFAULT NOW(),
+	total			DECIMAL(10,2) NOT NULL,
+	idcliente	INT NULL,
+	CONSTRAINT fk_cliente FOREIGN KEY (idcliente) REFERENCES clientes(id) ON DELETE SET NULL
+)ENGINE = INNODB;
+
+CREATE TABLE detalleventa
+(
+	id				INT AUTO_INCREMENT PRIMARY KEY,
+	idventa		INT NOT NULL,
+	idproducto	INT NOT NULL,
+	cantidad		INT NOT NULL,
+	precio		DECIMAL(7,2) NOT NULL,
+	CONSTRAINT fk_venta FOREIGN KEY (idventa) REFERENCES ventas(id) ON DELETE CASCADE,
+	CONSTRAINT fk_producto FOREIGN KEY (idproducto) REFERENCES productos(id)
+)ENGINE = INNODB;
 

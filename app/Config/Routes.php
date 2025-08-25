@@ -56,3 +56,9 @@ $routes->get('/productos/edit/(:num)', 'ProductoController::edit/$1');
 $routes->post('/productos/update', 'ProductoController::update');
 //eliminar por id
 $routes->get('/productos/delete/(:num)', 'ProductoController::delete/$1');
+
+
+// RUTAS DE VENTAS
+
+//listar
+$routes->get('/ventas', 'VentaController::index');
