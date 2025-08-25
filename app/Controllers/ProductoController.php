@@ -15,6 +15,13 @@ class ProductoController extends BaseController
 
         //$datos['productos'] = $producto->orderBy('id', 'DESC')->findAll();
 
+        /**
+         * 1.SELECCIONAMOS TODOS LOS CAMPOS DE PRODUCTOS Y LO RENOMBRAMOS PARA EVITAR CONFUSIONES
+         * 2.JOIN => HACE UN LEFT JOIN (UNION IZQUIERDA) CON LA TABLA PROVEEDORES
+         * ("COMO ES UN LEFT JOIN TRAE TMB LOS PRODUCTOS QUE NO TIENEN PROVEEDOR ASGINADO [NOMBREPROV = NULL]")
+         * 3.ORDERBY => ORDENAR POR (POR ID Y DESC)
+         * 4.FINDALL => ENCUENTRA TODOS LOS REGISTRO[] Y LO MUESTRA
+         */
         $datos['productos'] = $producto
         ->select('productos.*, proveedores.nombre as nombreprov')
         ->join('proveedores', 'proveedores.id = productos.idproveedor', 'left')
@@ -32,6 +39,7 @@ class ProductoController extends BaseController
         $producto = new Producto();
         $datos['producto'] = $producto->where('id', $id)->first();
 
+        //obtenemos todos los proveedores registrados y se guardara en ['proveedores']
         $proveedor = new Proveedor();
         $datos['proveedores'] = $proveedor->findAll();
 
@@ -43,8 +51,10 @@ class ProductoController extends BaseController
 
     public function create()
     {
+
         $proveedor = new Proveedor();
         $datos['proveedores'] = $proveedor->findAll();
+
         $datos['header'] = view('Layouts/header');
         $datos['footer'] = view('Layouts/footer');
 
@@ -55,6 +65,12 @@ class ProductoController extends BaseController
     {
         $producto = new Producto();
 
+        /**
+         * @var mixed PARA REGISTRAR
+         * 1. obtenemos el id del proveedor en la tabla productos
+         * 2. operador ternario => Luego si $idproveedor es una cadena vacia ('') entonces se cambia por null, 
+         * sino se deja como esta 
+         */
         $idproveedor = $this->request->getVar('idproveedor');
         $idproveedor = ($idproveedor === '') ? null : $idproveedor;
 
@@ -77,6 +93,12 @@ class ProductoController extends BaseController
 
         $id = $this->request->getVar('id');
 
+        /**
+         * @var mixed PARA ACTUALIZAR
+         * 1. obtenemos el id del proveedor en la tabla productos
+         * 2. operador ternario => Luego si $idproveedor es una cadena vacia ('') entonces se cambia por null, 
+         * sino se deja como esta 
+         */
         $idproveedor = $this->request->getVar('idproveedor');
         $idproveedor = ($idproveedor === '') ? null : $idproveedor;
 
