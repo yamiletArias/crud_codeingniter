@@ -65,3 +65,5 @@ $routes->get('/ventas', 'VentaController::index');
 //Vista de registrar
 $routes->get('/ventas/create', 'VentaController::create');
 $routes->post('/ventas/save', 'VentaController::save');
+//Eliminar
+$routes->get('/ventas/delete/(:num)', 'VentaController::delete/$1');

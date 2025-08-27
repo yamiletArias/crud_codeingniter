@@ -88,6 +88,20 @@ class VentaController extends BaseController
 
     }
 
+    public function delete($id = null)
+    {
+        $venta = new Venta();
+        $detalleVenta = new DetalleVenta();
+
+        /* $idventa = $this->request->getVar('id');
+        $iddetventa = $this->request->getVar('idventa'); */
+
+        $detalleVenta->where('idventa', $id)->delete();
+        $venta->where('id', $id)->delete();
+
+        return $this->response->redirect(base_url('ventas'));
+    }
+
 
     /* public function store()
     {
