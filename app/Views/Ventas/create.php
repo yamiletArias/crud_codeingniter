@@ -38,16 +38,25 @@
                                         <option value="">Seleccione Producto</option>
                                         <?php foreach ($productos as $producto): ?>
                                             <option value="<?= $producto['id'] ?>" data-price="<?= $producto['precio'] ?>">
-                                                <?= $producto['nombre'] ?> - S/.
-                                                <?= number_format($producto['precio'], 2) ?></option>
+                                                <?= $producto['nombre'] ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     </select>
                                     <label for="productos">Seleccionar Producto</label>
                                 </div>
                             </div>
 
+                            <!-- CAMPO DEL PRECIO -->
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Precio del producto"
+                                        id="precio" name="precio" readonly>
+                                    <label for="precio">Precio</label>
+                                </div>
+                            </div>
+
                             <!-- CAMPOS DE CANTIDAD DEL PRODUCTOS -->
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-floating">
                                     <input type="number" class="form-control" placeholder="Cantidad de producto"
                                         id="cantidad" name="cantidad" required>
@@ -56,7 +65,7 @@
                             </div>
 
                             <!-- TOTAL DE VENTA -->
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Total" id="total" name="total"
                                         readonly>
@@ -91,11 +100,15 @@
         let selectedProduct = document.getElementById('productos').selectedOptions[0];
 
         if (selectedProduct) {
-            let price = parseFloat(selectedProduct.getAttribute('data-price'));
-            total += price * cantidad;
-        }
 
-        document.getElementById('total').value = total.toFixed(2); //decimal
+            let price = parseFloat(selectedProduct.getAttribute('data-price'));
+
+            document.getElementById('precio').value = price.toFixed(2);
+
+            total = price * cantidad;
+        }
+        document.getElementById('total').value = total.toFixed(2);
+    }
 </script>
 
 <?= $footer ?>
