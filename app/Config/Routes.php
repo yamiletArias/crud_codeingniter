@@ -25,8 +25,8 @@ $routes->get('/clientes/registrar', 'ClienteController::registrar');
 $routes->get('/clientes/editar/(:num)', 'ClienteController::editar/$1');
 $routes->get('/clientes/eliminar/(:num)', 'ClienteController::eliminar/$1');
 
-$routes->post('/clientes/guardar','ClienteController::guardar');
-$routes->post('/clientes/actualizar','ClienteController::actualizar');
+$routes->post('/clientes/guardar', 'ClienteController::guardar');
+$routes->post('/clientes/actualizar', 'ClienteController::actualizar');
 
 
 // RUTAS DE PROVEDDORES
@@ -64,3 +64,4 @@ $routes->get('/productos/delete/(:num)', 'ProductoController::delete/$1');
 $routes->get('/ventas', 'VentaController::index');
 //Vista de registrar
 $routes->get('/ventas/create', 'VentaController::create');
+$routes->post('/ventas/save', 'VentaController::save');
