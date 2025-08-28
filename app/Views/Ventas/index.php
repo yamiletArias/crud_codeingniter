@@ -2,7 +2,7 @@
 
 <div class="container my-2">
     <div class="my-3">
-        <h2>Lista de Ventas</h2>
+        <h2>Listado de Ventas</h2>
         <a href="<?= base_url('ventas/create') ?>" class="btn btn-sm btn-primary text-end">Registrar</a>
     </div>
 
