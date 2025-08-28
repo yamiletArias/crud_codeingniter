@@ -69,7 +69,6 @@ class VentaController extends BaseController
             'idcliente' => $idcliente
         ];
         $ventaM->insert($nuevoRegistroVenta);
-
         $newIdVenta = $ventaM->getInsertID();
 
         foreach ($productos as $idproducto) {
@@ -102,12 +101,74 @@ class VentaController extends BaseController
         return $this->response->redirect(base_url('ventas'));
     }
 
-
-    /* public function store()
+    public function edit($id = null)
     {
-        $venta = new Venta();
-        $detalleventa = new DetalleVenta();
+        $ventaM = new Venta();
+        $detalleVentaM = new DetalleVenta();
+        $clientesM = new Cliente();
+        $productosM = new Producto();
 
-    } */
+        $datos['venta'] = $ventaM->where('id', $id)->first();
+        //$datos['detalleventa'] = $venta->where('idventa', $idventa);
+        $datos['detalleVentas'] = $detalleVentaM->where('idventa', $id)->findAll();
+
+        $datos['clientes'] = $clientesM->findAll();
+        $datos['productos'] = $productosM->findAll();
+
+        $datos['header'] = view('Layouts/header');
+        $datos['footer'] = view('Layouts/footer');
+
+        return view('Ventas/edit', $datos);
+
+    }
+
+    public function update()
+    {
+        $ventaM = new Venta();
+        $detalleVentaM = new DetalleVenta();
+        //$clientesM = new Cliente();
+        $productosM = new Producto();
+
+        //$id = $this->request->getVar('id');
+        $idventa = $this->request->getVar('idventa');
+        $idcliente = $this->request->getVar('idcliente');
+        $productos = $this->request->getVar('productos');
+        $cantidades = $this->request->getVar('cantidades');
+
+        $total = 0;
+        foreach ($productos as $index => $idproducto) {
+            $producto = $productosM->find($idproducto);
+            if ($producto) {
+                $cantidad = $cantidades[$index];
+                $total += $producto['precio'] * $cantidad;
+            }
+        }
+
+        /* $actualizarRegistro = [
+            'total' => $total,
+            'idcliente' => $idcliente
+        ]; */
+
+        $ventaM->update($idventa, [
+            'total' => $total,
+            'idcliente' => $idcliente
+        ]);
+        $detalleVentaM->where('idventa', $idventa)->delete();
+        //$newIdUpdate = $ventaM->getInsertID();
+
+        foreach ($productos as $index => $idproducto) {
+            $producto = $productosM->find($idproducto);
+            if ($producto) {
+                $detalleVentaM->insert([
+                    'idventa' => $idventa,
+                    'idproducto' => $idproducto,
+                    'cantidad' => $cantidades[$index],
+                    'precio' => $producto['precio']
+                ]);
+                //$detalleVentaM->update($detalleVentaM); 
+            }
+        }
+        return $this->response->redirect(base_url('ventas'));
+    }
 
 }

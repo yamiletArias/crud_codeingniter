@@ -65,5 +65,8 @@ $routes->get('/ventas', 'VentaController::index');
 //Vista de registrar
 $routes->get('/ventas/create', 'VentaController::create');
 $routes->post('/ventas/save', 'VentaController::save');
-//Eliminar
+//Eliminar por id
 $routes->get('/ventas/delete/(:num)', 'VentaController::delete/$1');
+//Vista de editar
+$routes->get('/ventas/edit/(:num)', 'VentaController::edit/$1');
+$routes->post('/ventas/update','VentaController::update');
